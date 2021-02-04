@@ -1,0 +1,91 @@
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      target: "home" //home by default
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    this.setState({
+      target: e.target.value
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <button onClick={this.handleClick} value="home">
+                home
+              </button>
+            </li>
+            <li>
+              <button onClick={this.handleClick} value="about">
+                about
+              </button>
+            </li>
+            <li>
+              <button onClick={this.handleClick} value="contact">
+                contact
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <main>
+          {this.state.target === "home" && <Home />}
+          {this.state.target === "about" && <About />}
+          {this.state.target === "contact" && <Contact />}
+        </main>
+      </div>
+    );
+  }
+}
+
+class Home extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 style={{color:"Blue"}}>HOME</h1>
+
+        <p>
+          Welcome to this app!
+          As a customer (referrer), this app would let you view a page that displays a URL (Share URL), which you can share to  friends. When the friends use the checkout, it allows you to get a reward and be able to know you have a reward. Customers can refer their friends, get rewards, and be incentivised to refer more friends.
+   
+        </p>
+      </div>
+    );
+  }
+}
+class About extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 style={{color: "red"}}>ABOUT</h1>
+
+        <p>
+          this app is about; 
+        </p>
+      </div>
+    );
+  }
+}
+
+class Contact extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 style={{color: "black"}}>EXPECTATIONS</h1>
+        <p>
+          
+          This page will allow you to share a link, show the freinds page, acitivty feed, and share box. 
+        </p>
+      </div>
+    );
+  }
+}
+
+React.render(<App />, document.getElementById("app"));
